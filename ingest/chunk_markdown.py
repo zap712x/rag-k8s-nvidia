@@ -13,7 +13,7 @@ DOCS_ROOT = PROJECT_ROOT / "data/raw/k8s-website/content/en/docs"
 if not DOCS_ROOT.exists():
     raise FileNotFoundError(f"文档目录不存在: {DOCS_ROOT}")
 
-# 第一版只用核心目录，别贪多
+# 只用核心目录
 TARGET_DIRS = ["concepts", "tasks"]
 
 
