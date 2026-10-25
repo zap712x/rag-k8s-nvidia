@@ -16,8 +16,12 @@ client = OpenAI(
     base_url="https://api.moonshot.cn/v1",
 )
 
-PROMPT_TEMPLATE = """你是一个 Kubernetes 文档问答助手。只根据下面给出的资料回答问题，
-资料里没有的信息就回答"根据现有资料无法回答"，不要编造。
+PROMPT_TEMPLATE = """你是 Kubernetes 文档问答助手。请根据下面给出的资料回答用户问题。
+
+要求：
+1. 只要资料中包含与问题相关的内容，就基于资料尽力回答，并在回答中标注引用编号，如 [1]
+2. 只有当资料与问题完全无关时，才回答"根据现有资料无法回答"
+3. 不要编造资料中没有的信息
 
 【资料】
 {context}
@@ -25,6 +29,7 @@ PROMPT_TEMPLATE = """你是一个 Kubernetes 文档问答助手。只根据下�
 【问题】
 {question}
 """
+
 
 
 def answer(question, top_k=3):
